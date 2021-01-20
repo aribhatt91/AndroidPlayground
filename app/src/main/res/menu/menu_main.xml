@@ -22,5 +22,15 @@
         android:orderInCategory="100"
         android:title="@string/action_fbase"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_alarm"
+        android:orderInCategory="100"
+        android:title="@string/action_alarm"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_perm"
+        android:orderInCategory="100"
+        android:title="@string/action_permissions"
+        app:showAsAction="never" />
 
 </menu>

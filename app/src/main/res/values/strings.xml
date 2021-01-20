@@ -2,6 +2,9 @@
     <string name="app_name">KotlinLearner</string>
     <string name="action_settings">Settings</string>
     <string name="action_fbase">Firebase Learner</string>
+    <string name="action_alarm">Alarm</string>
+    <string name="action_mediaapp">Media App</string>
+    <string name="action_permissions">Permissions App</string>
     <string name="action_add">Add sample data</string>
     <string name="action_logout">Logout</string>
     <string name="action_add_new">Add new note</string>
@@ -26,4 +29,5 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_emoji_status">EmojiStatusActivity</string>
+    <string name="title_activity_permissions_tutorial">PermissionsTutorialActivity</string>
 </resources>

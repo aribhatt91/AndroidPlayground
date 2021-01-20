@@ -1,25 +1,11 @@
-package com.aribhatt.kotlinlearner.ui.activities
+package com.aribhatt.kotlinlearner.firebase.ui
 
-import android.app.Activity
 import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
 import com.aribhatt.kotlinlearner.R
 import com.aribhatt.kotlinlearner.databinding.ActivityLoginBinding
-import com.aribhatt.kotlinlearner.ui.activities.EmojiStatusActivity
-import com.aribhatt.kotlinlearner.ui.activities.ui.login.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

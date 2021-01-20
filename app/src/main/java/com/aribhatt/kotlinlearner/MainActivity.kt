@@ -2,6 +2,10 @@ package com.aribhatt.kotlinlearner
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +14,23 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.aribhatt.kotlinlearner.databinding.ActivityMainBinding
 import com.aribhatt.kotlinlearner.ui.activities.DetailActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private val handler = object : Handler(Looper.getMainLooper()) {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            val bundle = msg.data
+            val message = bundle?.getString("MESSAGE_KEY")
+            log(message ?: "Nothing was sent")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +47,38 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+    }
+    private fun runBackgroundCode() {
+        thread (start = true){
+            val bundle = Bundle()
+            for (i in 1..10) {
+                bundle.putString("MESSAGE_KEY", "Looping $i")
+                Message().also {
+                    it.data = bundle
+                    handler.sendMessage(it)
+                }
+                Thread.sleep(1000)
+
+            }
+            bundle.putString("MESSAGE_KEY", "All done!")
+            Message().also {
+                it.data = bundle
+                handler.sendMessage(it)
+            }
+        }
+
+        CoroutineScope(Dispatchers.Main).launch {
+            val result = fetchSomething()
+            Log.i("MainActivity", result)
+        }
+    }
+    private fun log(str: String) {
+
+    }
+
+    private suspend fun fetchSomething() : String {
+        delay(2000)
+        return "Fake api response"
     }
 
     /*override fun onCreateOptionsMenu(menu: Menu): Boolean {

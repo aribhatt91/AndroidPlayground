@@ -7,17 +7,18 @@ import android.os.Looper
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aribhatt.kotlinlearner.alarm.ui.AlarmActivity
 import com.aribhatt.kotlinlearner.viewmodel.MainViewModel
 import com.aribhatt.kotlinlearner.databinding.FragmentFirstBinding
 import com.aribhatt.kotlinlearner.ui.activities.DetailActivity
-import com.aribhatt.kotlinlearner.ui.activities.LoginActivity
+import com.aribhatt.kotlinlearner.firebase.ui.LoginActivity
+import com.aribhatt.kotlinlearner.permissionslearner.PermissionsTutorialActivity
 import com.aribhatt.kotlinlearner.ui.adapters.NoteListAdapter
 import com.google.android.material.snackbar.Snackbar
 
@@ -118,6 +119,14 @@ class FirstFragment : Fragment(), NoteListAdapter.ListItemListener {
                 startActivity(Intent(activity, LoginActivity::class.java))
                 return true
             }
+            R.id.action_alarm -> {
+                startActivity(Intent(activity, AlarmActivity::class.java))
+                return true
+            }
+            R.id.action_perm -> {
+                startActivity(Intent(activity, PermissionsTutorialActivity::class.java))
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -131,5 +140,9 @@ class FirstFragment : Fragment(), NoteListAdapter.ListItemListener {
 
     override fun onItemSelectionChange() {
         requireActivity().invalidateOptionsMenu()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
