@@ -6,6 +6,7 @@
     <string name="action_mediaapp">Media App</string>
     <string name="action_permissions">Permissions App</string>
     <string name="action_add">Add sample data</string>
+    <string name="action_track">Activity Tracker</string>
     <string name="action_logout">Logout</string>
     <string name="action_add_new">Add new note</string>
     <string name="action_delete">Delete</string>

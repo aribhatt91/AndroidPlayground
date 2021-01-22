@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aribhatt.kotlinlearner.activitytracker.ui.TrackerActivity
 import com.aribhatt.kotlinlearner.alarm.ui.AlarmActivity
 import com.aribhatt.kotlinlearner.viewmodel.MainViewModel
 import com.aribhatt.kotlinlearner.databinding.FragmentFirstBinding
@@ -125,6 +126,10 @@ class FirstFragment : Fragment(), NoteListAdapter.ListItemListener {
             }
             R.id.action_perm -> {
                 startActivity(Intent(activity, PermissionsTutorialActivity::class.java))
+                return true
+            }
+            R.id.action_track -> {
+                startActivity(Intent(activity, TrackerActivity::class.java))
                 return true
             }
             else -> super.onOptionsItemSelected(item)

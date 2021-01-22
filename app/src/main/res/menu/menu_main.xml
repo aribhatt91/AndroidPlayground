@@ -32,5 +32,10 @@
         android:orderInCategory="100"
         android:title="@string/action_permissions"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_track"
+        android:orderInCategory="100"
+        android:title="@string/action_track"
+        app:showAsAction="never" />
 
 </menu>

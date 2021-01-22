@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -25,10 +24,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinLearner"
         tools:ignore="GoogleAppIndexingWarning">
+        <service
+            android:name=".activitytracker.service.BackgroundDetectedActivitiesService"/>
+        <service
+            android:name=".activitytracker.service.DetectedActivityIntentService"
+            android:exported="false" />
+
+        <activity android:name=".permissionslearner.ImagePickerActivity" />
         <activity
             android:name=".permissionslearner.PermissionsTutorialActivity"
             android:label="@string/title_activity_permissions_tutorial"
-            android:theme="@style/Theme.KotlinLearner.NoActionBar"></activity>
+            android:theme="@style/Theme.KotlinLearner.NoActionBar" />
         <activity android:name=".mediaapp.ui.MusicActivity" />
         <activity android:name=".alarm.ui.AlarmActivity" />
 

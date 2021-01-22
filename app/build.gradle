@@ -91,6 +91,7 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
+    //Google Location Services - ActivityRecognition
     implementation "com.google.android.gms:play-services-location:$gplay_version"
 
     testImplementation 'junit:junit:4.13.1'
@@ -110,4 +111,9 @@ dependencies {
     //Permissions
     //https://blog.mindorks.com/implementing-easy-permissions-in-android-android-tutorial#:~:text=In%20the%20API%20level%2023,for%20permission%20at%20runtime%20also.
     implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //CircularImageView
+    //https://github.com/lopspower/CircularImageView
+    implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
 }
