@@ -6,18 +6,11 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.util.Log
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
 import com.aribhatt.kotlinlearner.databinding.ActivityMainBinding
-import com.aribhatt.kotlinlearner.ui.activities.DetailActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.aribhatt.kotlinlearner.common.ui.activities.DetailActivity
+import kotlinx.coroutines.*
+import timber.log.Timber
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -47,6 +40,20 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+        Timber.d("Hello from thread Main")
+        GlobalScope.launch (Dispatchers.IO) {
+            var res = dummyNetworkCall()
+            Timber.d("Hello from coroutine - ${Thread.currentThread().name}")
+            withContext(Dispatchers.Main){
+                Timber.d("Response from (withContext) - ${Thread.currentThread().name} - $res")
+            }
+
+        }
+    }
+
+    suspend fun dummyNetworkCall(): String {
+        delay(3000L)
+        return "Aliens say: How are you?"
     }
     private fun runBackgroundCode() {
         thread (start = true){

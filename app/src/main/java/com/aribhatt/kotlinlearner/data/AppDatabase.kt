@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.aribhatt.kotlinlearner.data.dao.NoteDao
 import com.aribhatt.kotlinlearner.data.entities.NoteEntity
-import com.aribhatt.kotlinlearner.utils.DateConverter
+import com.aribhatt.kotlinlearner.common.utils.DateConverter
 
 @Database(entities = [NoteEntity::class], version = 1, exportSchema = false)
 @TypeConverters(DateConverter::class)

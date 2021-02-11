@@ -2,9 +2,8 @@ package com.aribhatt.kotlinlearner.activitytracker.service
 
 import android.app.IntentService
 import android.content.Intent
-import android.content.Context
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.aribhatt.kotlinlearner.activitytracker.ui.TrackerActivity
+import com.aribhatt.kotlinlearner.activitytracker.TrackerActivity
 import com.google.android.gms.location.ActivityRecognitionResult
 import com.google.android.gms.location.DetectedActivity
 
@@ -41,6 +40,7 @@ class DetectedActivityIntentService : IntentService("DetectedActivityIntentServi
         for (activity in detectedActivities) {
             broadcastActivity(activity as DetectedActivity)
         }
+
     }
 
     private fun broadcastActivity(activity: DetectedActivity) {

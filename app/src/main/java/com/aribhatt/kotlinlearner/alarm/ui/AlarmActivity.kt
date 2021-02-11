@@ -8,9 +8,8 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
 import android.widget.Toast
-import com.aribhatt.kotlinlearner.R
 import com.aribhatt.kotlinlearner.databinding.ActivityAlarmBinding
-import com.aribhatt.kotlinlearner.service.broadcastreceiver.VibrateReceiver
+import com.aribhatt.kotlinlearner.common.broadcastreceiver.VibrateReceiver
 
 class AlarmActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlarmBinding

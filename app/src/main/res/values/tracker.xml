@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="run_title">Your Runs</string>
+    <string name="stats_title">Stats</string>
+    <string name="settings_title">Settings</string>
+    <string name="frag_setup_welcome">Welcome!\nPlease enter your name and weight.</string>
+    <string name="frag_setup_name">Your name</string>
+    <string name="frag_setup_weight">Your weight</string>
+    <string-array name="filter_options">
+        <item>Date</item>
+        <item>Running Time</item>
+        <item>Distance</item>
+        <item>Average Speed</item>
+        <item>Calories Burned</item>
+    </string-array>
+</resources>

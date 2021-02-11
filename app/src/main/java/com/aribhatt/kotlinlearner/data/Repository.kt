@@ -1,14 +1,12 @@
 package com.aribhatt.kotlinlearner.data
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.MutableLiveData
 import com.aribhatt.kotlinlearner.data.api.ApiService
 import com.aribhatt.kotlinlearner.data.entities.Monster
-import com.aribhatt.kotlinlearner.utils.FileHelper
-import com.aribhatt.kotlinlearner.utils.NetworkHelper
+import com.aribhatt.kotlinlearner.common.utils.FileHelper
+import com.aribhatt.kotlinlearner.common.utils.NetworkHelper
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types

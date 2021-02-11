@@ -6,8 +6,11 @@ import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import android.widget.Toast
-import com.aribhatt.kotlinlearner.activitytracker.ui.TrackerActivity
+import com.aribhatt.kotlinlearner.activitytracker.TrackerActivity
 import com.google.android.gms.location.ActivityRecognitionClient
+import com.google.android.gms.location.ActivityTransition
+import com.google.android.gms.location.ActivityTransitionRequest
+import com.google.android.gms.location.DetectedActivity
 
 class BackgroundDetectedActivitiesService : Service() {
 
@@ -71,6 +74,92 @@ class BackgroundDetectedActivitiesService : Service() {
         }
         task?.addOnFailureListener {
             Toast.makeText(applicationContext, "Failed to remove activity updates!",
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+    fun requestActivityTransitionUpdatesButtonHandler() {
+        val transitions = mutableListOf<ActivityTransition>()
+
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.IN_VEHICLE)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_ENTER)
+                .build()
+
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.IN_VEHICLE)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_EXIT)
+                .build()
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.RUNNING)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_ENTER)
+                .build()
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.RUNNING)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_EXIT)
+                .build()
+
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.WALKING)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_ENTER)
+                .build()
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.WALKING)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_EXIT)
+                .build()
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.ON_BICYCLE)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_ENTER)
+                .build()
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.ON_BICYCLE)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_EXIT)
+                .build()
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.STILL)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_ENTER)
+                .build()
+        transitions +=
+            ActivityTransition.Builder()
+                .setActivityType(DetectedActivity.STILL)
+                .setActivityTransition(ActivityTransition.ACTIVITY_TRANSITION_EXIT)
+                .build()
+
+        val task = mActivityRecognitionClient?.requestActivityTransitionUpdates(
+            ActivityTransitionRequest(transitions),
+            mPendingIntent
+        )
+        task?.addOnSuccessListener {
+            Toast.makeText(applicationContext,
+                "Successfully requested activity transition updates",
+                Toast.LENGTH_SHORT)
+                .show()
+        }
+        task?.addOnFailureListener {
+            Toast.makeText(applicationContext,
+                "Requesting activity transition updates failed to start",
+                Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+    fun removeActivityTransitionUpdatesButtonHandler() {
+        val task = mActivityRecognitionClient?.removeActivityTransitionUpdates(mPendingIntent)
+        task?.addOnSuccessListener {
+            Toast.makeText(applicationContext,
+                "Removed activity transition updates successfully!",
+                Toast.LENGTH_SHORT)
+                .show()
+        }
+        task?.addOnFailureListener {
+            Toast.makeText(applicationContext, "Failed to remove activity transition updates!",
                 Toast.LENGTH_SHORT).show()
         }
     }
